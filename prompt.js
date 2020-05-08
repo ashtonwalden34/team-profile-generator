@@ -6,10 +6,7 @@ const Engineer = require('./Develop/lib/Engineer.js');
 
 var team = [];
 
-
-
 function employeeQs() {
-
     inquirer
         .prompt([
             {
@@ -33,12 +30,11 @@ function employeeQs() {
                 message: "Enter your email"
             }
         ]).then(function (answers) {
-            console.log(answers);
-            if (roleQuestion = "Intern") {
+            if (answers.roleQuestion == "Intern") {
                 askInternQs(answers);
-            }else if (roleQuestion = "Manager"){
+            }else if (answers.roleQuestion == "Manager"){
                 askManagerQs(answers);
-            }else if (roleQuestion = "Engineer"){
+            }else if (answers.roleQuestion == "Engineer"){
                 askEngineerQs(answers);
             }else
                 return "Please enter a valid postion."
@@ -46,7 +42,6 @@ function employeeQs() {
 };
 
 employeeQs();
-
 
 function askInternQs(baseAnswer) {
     inquirer
@@ -97,9 +92,18 @@ function addTeamQs(){
                 "yes",
                 "no"
             ]
-
+        }).then(function() {
+            if (addTeam = "yes") {
+                employeeQs
+                ()
+            } else if(addTeam = "no") {
+                return "no more team"
+            }
         })
 };
+
+
+
 
 
 
