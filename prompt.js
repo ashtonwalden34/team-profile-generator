@@ -1,5 +1,5 @@
-var inquirer = require("inquirer");
-//const render = require("./lib/htmlRenderer");
+const inquirer = require("inquirer");
+const htmlRender = require("./Develop/lib/htmlRenderer.js");
 const Intern = require('./Develop/lib/Intern.js');
 const Manager = require('./Develop/lib/Manager.js');
 const Engineer = require('./Develop/lib/Engineer.js');
@@ -38,7 +38,9 @@ function employeeQs() {
                 askEngineerQs(answers);
             }else
                 return "Please enter a valid postion."
-            })
+            }).then(function (answers) {
+                addTeamQs(answers);
+            });
 };
 
 employeeQs();
@@ -85,33 +87,18 @@ function askEngineerQs(baseAnswer) {
 function addTeamQs(){
     inquirer
         .prompt({
-            type: "list",
+            type: "confirm",
             name: "addTeam",
             message: "Would you like to add another team member?",
             choices: [
                 "yes",
                 "no"
             ]
-        }).then(function() {
-            if (addTeam = "yes") {
-                employeeQs
-                ()
-            } else if(addTeam = "no") {
-                return "no more team"
+        }).then(function(answers){
+            if (answers.addTeam == "yes") {
+                employeeQs();
+            }else if (answers.addTeam == "no") {
+                htmlRender();
             }
         })
-};
-
-
-
-
-
-
-
-
-
-
-
-// one more question that says do u want to add another ??
-
-// if they do not want ot add another then run htmlRenderer
+    };
