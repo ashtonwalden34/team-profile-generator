@@ -5,8 +5,10 @@ const Manager = require('./Develop/lib/Manager.js');
 const Engineer = require('./Develop/lib/Engineer.js');
 const fs = require("fs");
 
+// variable to store team members
 var team = [];
 
+// Function asks base questions for all employees
 function employeeQs() {
     inquirer
         .prompt([
@@ -30,6 +32,7 @@ function employeeQs() {
                 name: "email",
                 message: "Enter your email"
             }
+            // Funciton asks specific question based on role of employee
         ]).then(function (answers) {
             if (answers.role == "Intern") {
                 askInternQs(answers);
@@ -44,9 +47,10 @@ function employeeQs() {
                 //addTeamQs(answers);
             //});
 };
-
+// Runs function for base employee questions
 employeeQs();
 
+// Function for intern specific questions
 function askInternQs(baseAnswer) {
     inquirer
         .prompt({
@@ -61,6 +65,7 @@ function askInternQs(baseAnswer) {
         })
 };
 
+// Function for Manager specific questions
 function askManagerQs(baseAnswer) {
     inquirer
         .prompt({
@@ -69,14 +74,15 @@ function askManagerQs(baseAnswer) {
             message: "Enter your office number."
         }).then(function(ManagerQ){
             // make new class
-            console.log(baseAnswer);
-            console.log(ManagerQ.officeNumber);
+            //console.log(baseAnswer);
+            //console.log(ManagerQ.officeNumber);
             var newManager = new Manager(baseAnswer.name, 1, baseAnswer.email, ManagerQ.officeNumber)
             team.push(newManager)
             addTeamQs();
         })
 };
 
+// Function for Engineer specific questions
 function askEngineerQs(baseAnswer) {
     inquirer
         .prompt({
@@ -91,6 +97,7 @@ function askEngineerQs(baseAnswer) {
         })
 };
 
+// Function to ask the user if they would like to add another team member
 function addTeamQs() {
     inquirer
         .prompt({
@@ -102,17 +109,16 @@ function addTeamQs() {
                 "no"
             ]
         }).then(function(answers){
-            console.log(answers.addTeam);
+            //console.log(answers.addTeam);
             if (answers.addTeam == true) {
                 employeeQs();
             }else if (answers.addTeam == false) {
-                console.log(team);
+                //console.log(team);
                 htmlRender(team);
                 fs.writeFile("team.html",htmlRender(team), (err) => {
                     if (err) throw err;
-                    console.log('The file has been saved!');
+                    //console.log('The file has been saved!');
                   });
             }
         })
     };
-

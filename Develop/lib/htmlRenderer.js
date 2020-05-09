@@ -4,7 +4,7 @@ const fs = require("fs");
 const templatesDir = path.resolve(__dirname, "../templates");
 
 const render = employees => {
-  console.log("html test")
+  //console.log("html test")
   const html = [];
 
   html.push(employees
