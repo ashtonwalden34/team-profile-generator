@@ -55,6 +55,7 @@ function askInternQs(baseAnswer) {
             // make new class
             var newIntern = new Intern(baseAnswer.name)
             team.push(newIntern)
+            return true;
         })
 };
 
