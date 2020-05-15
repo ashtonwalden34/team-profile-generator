@@ -7,6 +7,7 @@ const fs = require("fs");
 
 // variable to store team members
 var team = [];
+//var idNum = team.length;
 
 // Function asks base questions for all employees
 function employeeQs() {
@@ -31,6 +32,11 @@ function employeeQs() {
                 type: "input",
                 name: "email",
                 message: "Enter your email"
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "Enter your id number"
             }
             // Funciton asks specific question based on role of employee
         ]).then(function (answers) {
@@ -59,9 +65,11 @@ function askInternQs(baseAnswer) {
             message: "Enter your school."
         }).then(function(internQ){
             // make new class
-            var newIntern = new Intern(baseAnswer.name, 1, baseAnswer.email, internQ.school)
+            var newIntern = new Intern(baseAnswer.name, baseAnswer.id, baseAnswer.email, internQ.school)
             team.push(newIntern)
+            //idNum();
             addTeamQs();
+            //idNum = team.length;
         })
 };
 
@@ -76,9 +84,11 @@ function askManagerQs(baseAnswer) {
             // make new class
             //console.log(baseAnswer);
             //console.log(ManagerQ.officeNumber);
-            var newManager = new Manager(baseAnswer.name, 1, baseAnswer.email, ManagerQ.officeNumber)
+            var newManager = new Manager(baseAnswer.name, baseAnswer.id, baseAnswer.email, ManagerQ.officeNumber)
             team.push(newManager)
+            //idNum();
             addTeamQs();
+            //idNum = team.length;
         })
 };
 
@@ -91,9 +101,11 @@ function askEngineerQs(baseAnswer) {
             message: "Enter your GitHub username."
         }).then(function(EngineerQ){
             // make new class
-            var newEngineer = new Engineer(baseAnswer.name, 1, baseAnswer.email, EngineerQ.GitHubUser)
+            var newEngineer = new Engineer(baseAnswer.name, baseAnswer.id, baseAnswer.email, EngineerQ.GitHubUser)
             team.push(newEngineer)
+            //idNum();                         
             addTeamQs();
+            //var idNum = team.length;
         })
 };
 
