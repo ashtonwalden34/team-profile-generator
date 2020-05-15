@@ -7,7 +7,6 @@ const fs = require("fs");
 
 // variable to store team members
 var team = [];
-//var idNum = team.length;
 
 // Function asks base questions for all employees
 function employeeQs() {
@@ -49,10 +48,8 @@ function employeeQs() {
             }else
                 return "Please enter a valid postion."
             })
-            //.then(function (answers) {
-                //addTeamQs(answers);
-            //});
 };
+
 // Runs function for base employee questions
 employeeQs();
 
@@ -67,9 +64,7 @@ function askInternQs(baseAnswer) {
             // make new class
             var newIntern = new Intern(baseAnswer.name, baseAnswer.id, baseAnswer.email, internQ.school)
             team.push(newIntern)
-            //idNum();
             addTeamQs();
-            //idNum = team.length;
         })
 };
 
@@ -82,13 +77,9 @@ function askManagerQs(baseAnswer) {
             message: "Enter your office number."
         }).then(function(ManagerQ){
             // make new class
-            //console.log(baseAnswer);
-            //console.log(ManagerQ.officeNumber);
             var newManager = new Manager(baseAnswer.name, baseAnswer.id, baseAnswer.email, ManagerQ.officeNumber)
             team.push(newManager)
-            //idNum();
             addTeamQs();
-            //idNum = team.length;
         })
 };
 
@@ -102,10 +93,8 @@ function askEngineerQs(baseAnswer) {
         }).then(function(EngineerQ){
             // make new class
             var newEngineer = new Engineer(baseAnswer.name, baseAnswer.id, baseAnswer.email, EngineerQ.GitHubUser)
-            team.push(newEngineer)
-            //idNum();                         
+            team.push(newEngineer)                       
             addTeamQs();
-            //var idNum = team.length;
         })
 };
 
@@ -121,15 +110,12 @@ function addTeamQs() {
                 "no"
             ]
         }).then(function(answers){
-            //console.log(answers.addTeam);
             if (answers.addTeam == true) {
                 employeeQs();
             }else if (answers.addTeam == false) {
-                //console.log(team);
                 htmlRender(team);
                 fs.writeFile("team.html",htmlRender(team), (err) => {
                     if (err) throw err;
-                    //console.log('The file has been saved!');
                   });
             }
         })
