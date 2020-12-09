@@ -13,5 +13,9 @@ This node based application builds an html page consisting of team members that 
 
 
 # Links
-Github Repository: https://github.com/ashtonwalden34/team-profile-generator
-Vido Demo of App: https://drive.google.com/file/d/1Tv4v91ZfrDvzfO8Lb41kDE7UoqhJCJvU/view?usp=sharing
+- Github Repository: https://github.com/ashtonwalden34/team-profile-generator
+- Video Demo of App: https://drive.google.com/file/d/1Tv4v91ZfrDvzfO8Lb41kDE7UoqhJCJvU/view?usp=sharing
+
+- ![Video Demo](https://drive.google.com/file/d/1Tv4v91ZfrDvzfO8Lb41kDE7UoqhJCJvU/view?usp=sharing)
+
+test 
