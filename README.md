@@ -1,6 +1,6 @@
 # Team Profile Generator
 
-![Example html page with team members.](Assets/homework10-team-html);
+![Example html page with team members.](./Assets/homework10-team-html);
 
 # Description
 This node based application builds an html page consisting of team members that are created from user input. To run the application just enter 'node prompt.js' from the terminal after installing all dependencies. 
